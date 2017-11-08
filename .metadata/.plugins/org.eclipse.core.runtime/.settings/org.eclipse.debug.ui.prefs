@@ -6,4 +6,5 @@ org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UT
 org.eclipse.debug.ui.errorColor=235,20,80
 org.eclipse.debug.ui.inColor=185,222,10
 org.eclipse.debug.ui.outColor=244,244,244
+org.eclipse.debug.ui.save_dirty_editors_before_launch=always
 preferredTargets=default\:default|

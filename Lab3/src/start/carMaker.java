@@ -31,6 +31,7 @@ public enum carMaker {
 		}
 	}
 		
+	@Override
 	public String toString (){
 		String name="";
 		if(FIAT.equals(this)){
@@ -62,6 +63,30 @@ public enum carMaker {
 			return name;
 		}
 	}
+	boolean ourCarMaker() {
+		String ourMaker=this.toString();
+		if(ourMaker=="Fiat") {
+			return true;
+		}
+		if(ourMaker=="Ford") {
+			return true;
+		}
+		if(ourMaker=="Volvo") {
+			return true;
+		}
+		if(ourMaker=="BMW") {
+			return true;
+		}
+		if(ourMaker=="Chrysler") {
+			return true;
+		}
+		if(ourMaker=="GM") {
+			return true;
+		}
+		return false;
+	}
+
 }
 	
+
 	
