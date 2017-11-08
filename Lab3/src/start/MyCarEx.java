@@ -16,7 +16,7 @@ public class MyCarEx {
 	
 	public MyCarEx(String s)
 	{
-		try {
+	//	try {
 			if(s.split(";|_|\t").length == 3)
 			{
 				if(20<Double.parseDouble(s.split(";|_|\t")[0]) && Double.parseDouble(s.split(";|_|\t")[0])<80)
@@ -41,8 +41,8 @@ public class MyCarEx {
 					throw new IllegalArgumentException();
 				}
 			} 
-		}
-		finally {}
+//		}
+	//	finally {}
 		/*catch (NumberFormatException e) {}
 		catch (IllegalArgumentException e) {
 			System.out.print("ERROR: Wrong car maker name inserted.");
@@ -51,7 +51,7 @@ public class MyCarEx {
 	
 	boolean tankIt(double howMuch){
 		double temp=this.fuelInTank;
-		try {
+	//	try {
 			this.fuelInTank+=howMuch;
 			if(this.fuelInTank>this.tankCapacity){ //if fuel in tank is greater than tank capacity, set to full.
 				System.out.print("ERROR: Cannot put "+howMuch+" fuel in the tank.\n");
@@ -63,12 +63,12 @@ public class MyCarEx {
 				this.fuelInTank=temp;
 				throw new IllegalArgumentException();
 			}
-		}/*catch(IllegalArgumentException e) {
+	/*	}catch(IllegalArgumentException e) {
 			System.out.print("ERROR: Cannot put "+howMuch+" fuel in the tank.\n");
 			this.fuelInTank=temp;
 			return false;
 			
-		}*/finally{}
+		}finally{}*/
 		return true;
 	}
 	
@@ -76,7 +76,7 @@ public class MyCarEx {
 		double cons=fuelConsumption/100; //the amount of fuel it consumes per 1 km
 		double willuse=cons*distance;    //the amount of fuel it will consume to travel the trip distance
 		boolean r=false;
-		try {
+	//	try {
 			if(willuse>this.fuelInTank){ 		// if it will use more than it has returns false
 				System.out.print("ERROR: Cannot go on this trip, not enough fuel.\n");
 				throw new IllegalArgumentException();
@@ -88,9 +88,9 @@ public class MyCarEx {
 				this.lastTrip=distance;		// lastTrip is distance traveled in this trip.	
 				this.fuelInTank-=willuse;		// update fuel in tank
 			}
-		}/*catch(IllegalArgumentException e) {
+		/*}catch(IllegalArgumentException e) {
 			System.out.print("Cannot go on a trip of distance:"+distance+" as there is not enough fuel.\n");
-		}*/finally {}
+		}finally {}*/
 		return r;
 	}
 	

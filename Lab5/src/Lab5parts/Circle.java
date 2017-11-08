@@ -5,14 +5,18 @@ public class Circle extends Shape {
 
 	public Circle(int x, int y,int radius) {
 		super(x, y);
+		if(radius<=0) {
+			System.out.print("ERROR: Radius must be bigger than zero.\n");
+			throw new IllegalArgumentException();
+		}
 		this.setRadius(radius);		
+		
 	}
 
 	@Override
 	public void moveNorthSouth(int len) { //circle can only be moved north
-		if(len>0) {
-			super.x_coordinate=super.x_coordinate+len;
-			super.y_coordinate=super.y_coordinate+len;
+		if(len>=0) {
+			this.y_coordinate=this.y_coordinate+len;
 		}
 		else {
 			System.out.println("ERROR: Wrong value, circle can only move North.");
@@ -23,7 +27,7 @@ public class Circle extends Shape {
 	@Override
 	public void moveWestEast(int len) {
 		if(len!=0) {
-			System.out.println("Circle cannot be moved West or East.");
+			System.out.println("ERROR: Circle cannot be moved West or East.");
 			throw new IllegalArgumentException();
 		}
 	}
@@ -38,11 +42,15 @@ public class Circle extends Shape {
 		return 2*Math.PI*this.getRadius();
 	}
 
-	public double getRadius() {
-		return radius;
+	public int getRadius() {
+		return this.radius;
 	}
 
-	public void setRadius(double radius) {
+	public void setRadius(int radius) {
+		if(radius<=0) {
+			System.out.print("ERROR: Radius must be bigger than zero.\n");
+			throw new IllegalArgumentException();
+		}
 		this.radius = radius;
 	}
 	

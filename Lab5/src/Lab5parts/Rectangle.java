@@ -6,6 +6,10 @@ public class Rectangle extends Shape {
 
 	public Rectangle(int x, int y, int xSideSize, int ySideSize) {
 		super(x, y);
+		if(xSideSize<=0 || ySideSize<=0) {
+			System.out.print("ERROR: Sides cannot take such a value.");
+			throw new IllegalArgumentException();
+		}
 		this.setxSideSize(xSideSize);
 		this.setySideSize(ySideSize);
 	}
@@ -13,7 +17,7 @@ public class Rectangle extends Shape {
 	@Override
 	public void moveNorthSouth(int len) {
 		if(len!=0) {
-			System.out.println("Rectangle cannot be moved North or South.");
+			System.out.println("ERRO: Rectangle cannot be moved North or South.");
 			throw new IllegalArgumentException();
 		}
 		
@@ -22,7 +26,7 @@ public class Rectangle extends Shape {
 	@Override
 	public void moveWestEast(int len) {
 		if(len!=0) {
-			System.out.println("Rectangle cannot be moved East or West.");
+			System.out.println("ERROR: Rectangle cannot be moved East or West.");
 			throw new IllegalArgumentException();
 		}
 		
@@ -43,6 +47,9 @@ public class Rectangle extends Shape {
 	}
 
 	public void setxSideSize(int xSideSize) {
+		if(xSideSize<=0) {
+			throw new IllegalArgumentException();
+		}
 		this.xSideSize = xSideSize;
 	}
 
@@ -51,6 +58,9 @@ public class Rectangle extends Shape {
 	}
 
 	public void setySideSize(int ySideSize) {
+		if(ySideSize<=0) {
+			throw new IllegalArgumentException();
+		}
 		this.ySideSize = ySideSize;
 	}
 
