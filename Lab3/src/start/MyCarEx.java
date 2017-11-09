@@ -49,7 +49,7 @@ public class MyCarEx {
 		}*/
 	}
 	
-	boolean tankIt(double howMuch){
+	void tankIt(double howMuch){
 		double temp=this.fuelInTank;
 	//	try {
 			this.fuelInTank+=howMuch;
@@ -69,13 +69,12 @@ public class MyCarEx {
 			return false;
 			
 		}finally{}*/
-		return true;
 	}
 	
-	boolean startTrip(double distance){
+	void startTrip(double distance){
 		double cons=fuelConsumption/100; //the amount of fuel it consumes per 1 km
 		double willuse=cons*distance;    //the amount of fuel it will consume to travel the trip distance
-		boolean r=false;
+	//	boolean r=false;
 	//	try {
 			if(willuse>this.fuelInTank){ 		// if it will use more than it has returns false
 				System.out.print("ERROR: Cannot go on this trip, not enough fuel.\n");
@@ -83,7 +82,7 @@ public class MyCarEx {
 				//r=false;
 			}
 			if(willuse<=this.fuelInTank){ //if it will use less or equal than it has returns true
-				r=true;
+				//r=true;
 				this.mileage+=distance;		//adds distance traveled to existing mileage
 				this.lastTrip=distance;		// lastTrip is distance traveled in this trip.	
 				this.fuelInTank-=willuse;		// update fuel in tank
@@ -91,7 +90,7 @@ public class MyCarEx {
 		/*}catch(IllegalArgumentException e) {
 			System.out.print("Cannot go on a trip of distance:"+distance+" as there is not enough fuel.\n");
 		}finally {}*/
-		return r;
+	//	return r;
 	}
 	
 	double getTankCapacity(){
