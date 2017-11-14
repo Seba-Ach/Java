@@ -4,9 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class JTestCircle {
-
-	Circle c1=new Circle(5,5,5);	
+public class JTestCircle {	
 
 	@Test
 	public void testFuncts() {
@@ -27,16 +25,19 @@ public class JTestCircle {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testMoveSouth() throws Exception{
+		Circle c1=new Circle(5,5,5);
 		c1.moveNorthSouth(-5);
 	}
 	
 	@Test (expected=IllegalArgumentException.class)
 	public void testMoveWestEast() throws Exception{
+		Circle c1=new Circle(5,5,5);
 		c1.moveWestEast(1);
 	}
 	
 	@Test (expected=IllegalArgumentException.class)
 		public void testNegRadius() throws Exception{
+			Circle c1=new Circle(5,5,5);
 			Circle c2 = new Circle(5,5,-5);
 		}
 	

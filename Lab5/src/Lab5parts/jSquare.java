@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class jSquare {
-	Square s2 = new Square(10,10,5);
 
 	@Test
 	public void testFuncts() {
@@ -23,16 +22,19 @@ public class jSquare {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testNorthSouth() throws Exception{
+		Square s2 = new Square(10,10,5);
 		s2.moveNorthSouth(5);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEast() throws Exception{
+		Square s2 = new Square(10,10,5);
 		s2.moveWestEast(5);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testSideNeg() throws Exception{
+		Square s2 = new Square(10,10,5);
 		s2.setSideSize(-5);
 	}
 	

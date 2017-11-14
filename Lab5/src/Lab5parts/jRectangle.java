@@ -6,7 +6,6 @@ import org.junit.Test;
 
 public class jRectangle {
 
-	Rectangle r2 = new Rectangle(0,0,5,2);
 	@Test
 	public void testFuncts() {
 		Rectangle r1 = new Rectangle(5,5,2,4);
@@ -20,26 +19,32 @@ public class jRectangle {
 
 	@Test (expected=IllegalArgumentException.class)
 	public void testMoveNorth() throws Exception{
+		Rectangle r2 = new Rectangle(0,0,5,2);
 		r2.moveNorthSouth(2);
 	}
 	@Test (expected=IllegalArgumentException.class)
 	public void testMoveSouth() throws Exception{
+		Rectangle r2 = new Rectangle(0,0,5,2);
 		r2.moveNorthSouth(-5);
 	}
 	@Test (expected=IllegalArgumentException.class)
 	public void testMoveEast() throws Exception{
+		Rectangle r2 = new Rectangle(0,0,5,2);
 		r2.moveWestEast(2);
 	}
 	@Test (expected=IllegalArgumentException.class)
 	public void testMoveWest() throws Exception{
+		Rectangle r2 = new Rectangle(0,0,5,2);
 		r2.moveWestEast(-3);
 	}
 	@Test (expected=IllegalArgumentException.class)
 	public void testSetxNegSide() throws Exception{
+		Rectangle r2 = new Rectangle(0,0,5,2);
 		r2.setxSideSize(-4);
 	}
 	@Test (expected=IllegalArgumentException.class)
 	public void testSetyNegSide() throws Exception{
+		Rectangle r2 = new Rectangle(0,0,5,2);
 		r2.setySideSize(-1);
 	}
 }

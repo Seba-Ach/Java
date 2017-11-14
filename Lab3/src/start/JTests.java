@@ -17,7 +17,6 @@ public class JTests {
 		///////////////////////Above tests basically check for values equal to 0 because no values were passed into constructor
 	} 
 	
-	MyCarEx mce2 =new MyCarEx("25;6;Fiat"); //will basically call proper values into constructor
 	@Test
 	public void testFuncts() {
 		MyCarEx mcx =new MyCarEx("35;5;GM"); 
@@ -53,50 +52,53 @@ public class JTests {
 	
 	@Test (expected=IllegalArgumentException.class)
 	public void tankItOverflow() throws Exception {
+		MyCarEx mce2 =new MyCarEx("25;6;Fiat");
 		mce2.tankIt(15);
 		mce2.tankIt(25);
 	}
 	
 	@Test (expected=IllegalArgumentException.class)
 	public void tankNeg() throws Exception {
-		mce2.tankIt(-5);
+		MyCarEx mce3 =new MyCarEx("25;6;Fiat");
+		mce3.tankIt(-5);
 	}
 	
 	@Test (expected=IllegalArgumentException.class)
 	public void longTrip() throws Exception{
-		mce2.tankIt(10); //put 10 units of fuel into tank just so it isnt empty
-		mce2.startTrip(200);
+		MyCarEx mce4 =new MyCarEx("25;6;Fiat");
+		mce4.tankIt(10); //put 10 units of fuel into tank just so it isnt empty
+		mce4.startTrip(200);
 	}
 	
 	@Test (expected=IllegalArgumentException.class) //not double value inserted for first par
 	public void constructNumFormExcept() throws Exception{
-		MyCarEx mce3=new MyCarEx("asd;7;Fiat");
+		new MyCarEx("asd;7;Fiat");
 	}
 	@Test (expected=IllegalArgumentException.class) //low value inserted for first par
 	public void constructNumFormExcept2() throws Exception{
-		MyCarEx mce3=new MyCarEx("5;7;Fiat");
+		new MyCarEx("5;7;Fiat");
 	}
 	@Test (expected=IllegalArgumentException.class) //high value inserted for first par
 	public void constructNumFormExcept3() throws Exception{
-		MyCarEx mce3=new MyCarEx("90;7;Fiat");
+		new MyCarEx("90;7;Fiat");
 	}
 	
 	@Test (expected=IllegalArgumentException.class) //not double value inserted for first par
 	public void constructNumFormExcept4() throws Exception{
-		MyCarEx mce3=new MyCarEx("25;asd;Fiat");
+		new MyCarEx("25;asd;Fiat");
 	}
 	@Test (expected=IllegalArgumentException.class) //low value inserted for first par
 	public void constructNumFormExcept5() throws Exception{
-		MyCarEx mce3=new MyCarEx("25_2;Fiat");
+		new MyCarEx("25_2;Fiat");
 	}
 	@Test (expected=IllegalArgumentException.class) //high value inserted for first par
 	public void constructNumFormExcept6() throws Exception{
-		MyCarEx mce3=new MyCarEx("25_90;Fiat");
+		new MyCarEx("25_90;Fiat");
 	}
 	
 	@Test (expected=IllegalArgumentException.class) //high value inserted for first par
 	public void constructNumFormExcept7() throws Exception{
-		MyCarEx mce3=new MyCarEx("25_5_s");
+		new MyCarEx("25_5_s");
 	}
 
 }
