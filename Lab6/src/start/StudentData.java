@@ -31,151 +31,53 @@ public class StudentData {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
+	} 
 
 	
 	public StudentData(String s) throws MyExcepts
 	{
 		if(s.split(";").length == 5) // checking if correct format
-		{
-			String temp;  			 //string called temp that will hold values of the split strings
+		{			
+			//CHECKING FOR GENDER
+			Gender.genderChecker(s.split(";")[0].trim());
+			setGender(Gender.toEnum(s.split(";")[0].trim()));
 			
+			//SETTING FIRST NAME
+			checkNames.fnameChecker(s.split(";")[1].trim());
+			setFirstName(s.split(";")[1].trim());
 			
-			temp = s.split(";")[0].trim();  // zeroth value, the gender
-			if(Gender.genderChecker(temp)){  // call a function genderChecker, to check format
-				setGender(Gender.toEnum(temp)); //change from string to enum and then assign it 
-			//	System.out.print("Setting "+temp+" as an enum of Gender and it probably succeeded. " + gender.toString() +"\n");				
-				}
-			else {
-			//	System.out.print("Throwing exception in gender checker.\n"); // if genderChecker returns false this will be called and a exception will be thrown
-				throw new GenderExcepts();
-			}
+			//SETTING LAST NAME
+			checkNames.lnameChecker(s.split(";")[2].trim());
+			setLastName(s.split(";")[2].trim());			
 			
-			//next two arguments are passed with no problem as they are simple string to string
-			temp = s.split(";")[1].trim();
-			fnameChecker(temp);
-			setFirstName(temp);
-		//	System.out.print("Setting first name to " + temp+ ". \n");
+			//SETTING BIRTHDATE
+			birthDateSetter(s.split(";")[3]);		
 			
+			//SETTING MATRIC DATE
+			matricDateSetter(s.split(";")[4]);	
 			
-			temp = s.split(";")[2].trim();
-			lnameChecker(temp);
-			setLastName(temp);
-		//	System.out.print("Setting last name to "+temp+". \n");
-			
-			
-			temp = s.split(";")[3];
-			int y,m,d;
-			//split the temp once more into 3 subparts to extract year,month and date from temp, then parse as int and
-			//last i use .trim() function to trim all whitespace as parse wouldnt work with whitespace at the beginning or end.
-			y=Integer.parseInt(temp.split("/")[0].trim());
-			m=Integer.parseInt(temp.split("/")[1].trim());
-			d=Integer.parseInt(temp.split("/")[2].trim());
-			if(negDate(y,m,d)) {
-				throw new BDateExcepts();
-			}
-			y=yearChanger(y);
-			this.birthDate = new GregorianCalendar(y,m,d);			
-			
-			
-			temp = s.split(";")[4];
-			int y0,m0,d0;
-			y0=Integer.parseInt(temp.split("/")[0].trim());
-			m0=Integer.parseInt(temp.split("/")[1].trim());
-			d0=Integer.parseInt(temp.split("/")[2].trim());
-			if(negDate(y0,m0,d0)) {
-				throw new MatricDateExcepts();
-			}
-			y0=yearChanger(y0);
-			this.matriculationDate = new GregorianCalendar(y0,m0,d0);
-			
-			
-			if(y0-y>=17 && y0-y<=70 ) {  //checking if student isnt 17-70 then i throw exception
-				if(y0-y==17 && m0-m<=0) {
-					if(d0-d<0 || m0-m<0) {
-						throw new MatricBoundsExcepts();	
-					}
-				}
-			}
-			else if(y0-y < 17 || y0-y > 70) {
-				throw new MatricBoundsExcepts();				}
-		} 
+			//CHECKING IF STUDENT IS ABOVE OR EQUAL 17 AND BELOW OR EQUAL 70
+			checkDates.matricChecker(this.birthDate,this.matriculationDate);
+		}
 		else if(s.split(";").length != 5) {
 			System.out.println("Wrong Format of entry.");
 		}
 	}
-	
-	public int yearChanger(int y){
-		if(y<18) {
-			y=y+2000;				
-		}
-		else if(y>=18 && y<100) {
-			y=y+1900;
-		}
-		return y;
+		
+	public void birthDateSetter (String s) throws MyExcepts{
+		//split the temp once more into 3 subparts to extract year,month and date from temp, then parse as int and
+		//last i use .trim() function to trim all whitespace as parse wouldnt work with whitespace at the beginning or end.
+		checkDates bday = new checkDates();
+		bday.Dateformat(s);
+		this.birthDate = new GregorianCalendar(bday.getY(),bday.getM(),bday.getD());	
 	}
 	
-	public boolean lnameChecker(String s) throws MyExcepts {
-		int line=0;
-		if(!Character.isUpperCase(s.charAt(0))) {
-			throw new LNameExcepts();			}
-		for(int i=0;i<s.length()-1;i++) {
-			if(s.charAt(i)=='-') {
-				if(!Character.isUpperCase(s.charAt(i+1))){
-					throw new LNameExcepts();					}
-				line++;
-				if(line>1) {
-					throw new LNameExcepts();					}
-			}
-		}
-		return true;
-	}
-	
-	public boolean negDate (int y,int m, int d) {
-		if(y<=0||m<=0||d<=0) {
-			return true;
-		}
-		if(m>12) {
-			return true;
-		}
-		if(d>31) {
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean fnameChecker(String s) throws MyExcepts {
-		
-		String filename = "names.txt";
-		File file = new File(filename);	
-		ArrayList<String> names = new ArrayList<String>();
-		BufferedReader br;
-		try {
-			br = new BufferedReader(new FileReader(file));			
-			String line = br.readLine();
-		//	int i=0;
-		    while(line != null){
-		     //   System.out.println("Adding " + line + " to ArrayList. " + i);
-		   //     i++;
-		       names.add(line);
-		        line = br.readLine();
-		    }
-			br.close();
-		}
-		catch(FileNotFoundException e) {
-			System.out.println("ERROR: File not found exception, please change.");
-		} 
-		catch (IOException e) {
-			System.out.println("ERROR: Couldnt not read file.");
-		}
-		
-		for(String n : names) {
-			if(n.equalsIgnoreCase(s)) {
-				return true;
-			}
-		}
-		throw new FNameExcepts();
-		
+	public void matricDateSetter (String s) throws MyExcepts{
+		//split the temp once more into 3 subparts to extract year,month and date from temp, then parse as int and
+		//last i use .trim() function to trim all whitespace as parse wouldnt work with whitespace at the beginning or end.
+		checkDates matr = new checkDates();
+		matr.Dateformat(s);
+		this.matriculationDate = new GregorianCalendar(matr.getY(),matr.getM(),matr.getD());	
 	}
 	
 	public static void showLines(String file_name,StudSelection sel) throws MyExcepts{
@@ -248,7 +150,7 @@ public class StudentData {
 	//	String a = "M;john; Brown; 90/03/20;2010/01/2";
 	//	StudentData john = new StudentData(a);
 	//	StudSelection asel = StudSelection.GENDER;
-		showLines("testme.txt",StudSelection.FIRST_NAME);
+		showLines("testme.txt",StudSelection.ANY_ERROR);
 	}
 	
 }

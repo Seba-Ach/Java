@@ -33,20 +33,22 @@ public enum Gender {
 		return null; // same as above, eclipse error
 	}
 	
-	static boolean genderChecker(String S) {
+	static boolean genderChecker(String S) throws MyExcepts{
 		if(S.equalsIgnoreCase("male")){
 			return true;
 		}
-		if(S.equalsIgnoreCase("m")){
+		else if(S.equalsIgnoreCase("m")){
 			return true;
 		}
-		if(S.equalsIgnoreCase("female")){
+		else if(S.equalsIgnoreCase("female")){
 			return true;
 		}
-		if(S.equalsIgnoreCase("f")){
+		else if(S.equalsIgnoreCase("f")){
 			return true;
 		}
-		return false;
+		else{
+			throw new GenderExcepts();
+		}
 	}
 }
 
