@@ -34,12 +34,10 @@ public class checkNames {
 			try {
 				br = new BufferedReader(new FileReader(file));			
 				String line = br.readLine();
-			//	int i=0;
+			
 			    while(line != null){
-			     //   System.out.println("Adding " + line + " to ArrayList. " + i);
-			   //     i++;
 			       names.add(line);
-			        line = br.readLine();
+			       line = br.readLine();
 			    }
 				br.close();
 			}
