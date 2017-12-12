@@ -11,6 +11,7 @@ java_keyword=221,40,103
 java_keyword_return=221,40,103
 java_multi_line_comment=98,98,98
 java_single_line_comment=98,98,98
+markOccurrences=false
 org.eclipse.jdt.ui.formatterprofiles.version=13
 org.eclipse.jdt.ui.text.code_templates_migrated=true
 org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
