@@ -3,13 +3,13 @@ package start;
 import java.io.*;
 import java.util.*;
 
-public class StudentData {
+public class StudentData  {
 
 	private Gender gender;
 	private String firstName;
 	private String lastName;
 	protected GregorianCalendar birthDate; //GregorianCalendar Birthday = new GregorianCalendar(2012, Calendar.JANUARY, 1);
-	protected GregorianCalendar matriculationDate = new GregorianCalendar();
+	protected GregorianCalendar matriculationDate;// = new GregorianCalendar();
 	
 	public Gender getGender() {
 		return gender;
