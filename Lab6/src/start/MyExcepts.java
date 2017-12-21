@@ -68,4 +68,38 @@ class MatricBoundsExcepts extends MyExcepts{
 	}
 }
 
+class GradExcepts extends MyExcepts {
+	
+	private static final long serialVersionUID = 1L;
 
+	public GradExcepts() {
+		
+	}
+}
+
+class NegNumExcepts extends MyExcepts {
+	
+	private static final long serialVersionUID = 1L;
+
+	public NegNumExcepts() {
+		
+	}
+}
+
+class DuplicateExcepts extends MyExcepts {
+	
+	private static final long serialVersionUID = 1L;
+
+	public DuplicateExcepts() {
+		
+	}
+}
+
+class IDExcepts extends MyExcepts {
+	
+	private static final long serialVersionUID = 1L;
+
+	public IDExcepts() {
+		
+	}
+}
