@@ -8,16 +8,22 @@ public class UniTreeMap {
 
     public static void add(UniStudent r) throws MyExcepts
     {
-        for (Map.Entry<Integer, UniStudent> entry : students.entrySet())
+    	if(students.get(r.getId())!=null){
+    		throw new IDExcepts();
+    	}
+    	else{
+        students.put(r.getId(), r);
+    	}
+    	/*for (Map.Entry<Integer, UniStudent> entry : students.entrySet())
         {
             Integer key = entry.getKey();
             if(r.getId() == key)
                 throw new IDExcepts();
-        }
-        students.put(r.getId(), r);
+        } 
+    	students.put(r.getId(), r); */
     }
 
-    private static void sort(String field, Vector<UniStudent> itemLocationList) {
+    private static void sort(final String field, Vector<UniStudent> itemLocationList) {
         Collections.sort(itemLocationList, new Comparator<UniStudent>() {
             @Override
             public int compare(UniStudent o1, UniStudent o2) {
@@ -86,6 +92,6 @@ public class UniTreeMap {
         }
         
         System.out.println(UniTreeMap.orderByName());
-
+        System.out.println(UniTreeMap.orderByGenderAndMatriculation());
     }
 }

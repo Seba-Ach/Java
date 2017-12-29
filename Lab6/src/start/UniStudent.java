@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class UniStudent {
+public class UniStudent{
 
 	private Gender gender;
 	private String firstName;
@@ -15,6 +15,26 @@ public class UniStudent {
 	private int yearOfStudy;
 	private int id;
 	ArrayList<Integer> allID = new ArrayList<Integer>();
+	
+	@Override
+	public int hashCode(){
+		return this.id;
+	}
+	
+	
+	public int CompareTo (Object obj){
+		UniStudent other = (UniStudent) obj;
+	    return this.getId()-other.getId();
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		UniStudent other = (UniStudent) obj;
+		if(this.getId()!=other.getId()){
+			return false;
+		}
+		else return true;
+	}
 	
 	
 	public Gender getGender() {

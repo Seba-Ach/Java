@@ -19,7 +19,7 @@ public class UniHashSet {
         students.add(r);
     }
 
-    private static void sort(String field, Vector<UniStudent> itemLocationList) {
+    private static void sort(final String field, Vector<UniStudent> itemLocationList) {
         Collections.sort(itemLocationList, new Comparator<UniStudent>() {
             @Override
             public int compare(UniStudent o1, UniStudent o2) {
