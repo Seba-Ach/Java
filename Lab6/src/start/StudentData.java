@@ -145,6 +145,81 @@ public class StudentData  {
 		}
 	}
 	
+	public static String showLinesForGUI(String file_name,StudSelection sel) throws MyExcepts{
+		String filename = file_name;
+		String ret="";
+		File file = new File(filename);	
+		ArrayList<String> studentInfo = new ArrayList<String>();
+		BufferedReader br;
+		String type=sel.toString();
+		try {
+			br = new BufferedReader(new FileReader(file));			
+			String line = br.readLine();
+		//	int i=0;
+		    while(line != null){
+		     //   System.out.println("Adding " + line + " to ArrayList. " + i);
+		   //     i++;
+		       studentInfo.add(line);
+		        line = br.readLine();
+		    }
+			br.close();
+		}
+		catch(FileNotFoundException e) {
+			ret="ERROR: File not found exception, please change.";
+			return ret;
+		} 
+		catch (IOException e) {
+			ret="ERROR: Couldnt not read file.";
+			return ret;
+		}
+		
+		for(String data : studentInfo) {
+			try {
+				new StudentData(data);
+			}
+		/*	catch(MyExcepts e) {
+				new MyExcepts(data);
+			} */
+			catch(GenderExcepts e) {
+				if(type.equalsIgnoreCase("gender")|| type.equalsIgnoreCase("aerror")) {
+					ret=ret+"ERROR: Gender Error for: "+data + "\n";
+					
+				}
+			}  
+			catch(FNameExcepts e) {
+				if(type.equalsIgnoreCase("fname")|| type.equalsIgnoreCase("aerror") || type.equalsIgnoreCase("name")) {
+					ret=ret+"ERROR: Name Error for: "+data+ "\n";
+					
+				}
+			}
+			catch(LNameExcepts e) {
+				if(type.equalsIgnoreCase("lname")|| type.equalsIgnoreCase("aerror") || type.equalsIgnoreCase("name")) {
+					ret=ret+"ERROR: Name Error for: "+data+ "\n";
+					
+				}
+			}
+			catch(BDateExcepts e) {
+				if(type.equalsIgnoreCase("bdate")|| type.equalsIgnoreCase("aerror")) {
+					ret=ret+"ERROR: Birthdate Error for: "+data+ "\n";
+					
+				}
+			}
+			catch(MatricDateExcepts e) {
+				if(type.equalsIgnoreCase("mdate")|| type.equalsIgnoreCase("aerror")) {
+					ret=ret+"ERROR: Matriculation Error for: "+data+ "\n";
+					
+				}
+			}
+			catch(MatricBoundsExcepts e) {
+				if(type.equalsIgnoreCase("aerror")) {
+					ret=ret+"ERROR: Matriculation Bounds Error for: "+data+ "\n";
+					
+				}
+			}
+		}
+		return ret;
+	}
+	
 	public static void main (String[] args) throws MyExcepts{
 		
 	//	String a = "M;john; Brown; 90/03/20;2010/01/2";
