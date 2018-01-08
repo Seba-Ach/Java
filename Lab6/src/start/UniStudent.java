@@ -94,7 +94,7 @@ public class UniStudent{
 	}
 	
 	public String toString() {
-	    		return this.getGender()+";"+this.getFirstName()+";"+this.getLastName()+";"+this.getYearOfStudy()+"\n";    		
+	    		return this.getGender()+";"+this.getFirstName()+";"+this.getLastName()+";"+this.getYearOfStudy()+this.getId()+"\n";    		
 	}
 	
 	public void birthDateSetter (String s) throws MyExcepts{

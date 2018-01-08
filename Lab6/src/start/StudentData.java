@@ -109,9 +109,6 @@ public class StudentData  {
 			try {
 				new StudentData(data);
 			}
-		/*	catch(MyExcepts e) {
-				new MyExcepts(data);
-			} */
 			catch(GenderExcepts e) {
 				if(type.equalsIgnoreCase("gender")|| type.equalsIgnoreCase("aerror")) {
 					System.out.print("ERROR: Check gender for student data: "+data + "\n");
@@ -138,8 +135,8 @@ public class StudentData  {
 				}
 			}
 			catch(MatricBoundsExcepts e) {
-				if(type.equalsIgnoreCase("aerror")) {
-					System.out.print("ERROR: Student can not have matriculation date because students age isnt between 17-70 for student data: "+data+ "\n");
+				if(type.equalsIgnoreCase("aerror")|| type.equalsIgnoreCase("mdate")) {
+					System.out.print("ERROR: Please check Matriculation date for student data: "+data+ "\n");
 				}
 			}
 		}
@@ -211,7 +208,7 @@ public class StudentData  {
 				}
 			}
 			catch(MatricBoundsExcepts e) {
-				if(type.equalsIgnoreCase("aerror")) {
+				if(type.equalsIgnoreCase("aerror") || type.equalsIgnoreCase("mdate")) {
 					ret=ret+"ERROR: Matriculation Bounds Error for: "+data+ "\n";
 					
 				}

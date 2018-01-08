@@ -25,7 +25,7 @@ public enum StudSelection {
 			return name;
 		}
 		if(MATRICULATION_DATE.equals(this)) {
-			name="MDate";
+			name="mdate";
 			return name;
 		}
 		if(ANY_ERROR.equals(this)) {

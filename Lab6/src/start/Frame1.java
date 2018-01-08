@@ -1,16 +1,13 @@
 package start;
 
 import java.awt.EventQueue;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -33,8 +30,8 @@ public class Frame1 {
 	private ButtonGroup bg = new ButtonGroup();
 	private JTextField textFieldOne;
 	private JTextArea outArea;
+	private JLabel lblFileName;
 
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -47,7 +44,6 @@ public class Frame1 {
 			}
 		});
 	}
-
 	
 	public Frame1() {
 		initialize();
@@ -168,7 +164,7 @@ public class Frame1 {
 		bg.add(rdbtnName);
 		
 		textFieldOne = new JTextField();
-		textFieldOne.setBounds(287, 411, 187, 18);
+		textFieldOne.setBounds(428, 411, 187, 18);
 		frame.getContentPane().add(textFieldOne);
 		textFieldOne.setColumns(10);
 		
@@ -186,5 +182,9 @@ public class Frame1 {
 		outArea = new JTextArea();
 		outArea.setBounds(10, 11, 678, 349);
 		frame.getContentPane().add(outArea);
+		
+		lblFileName = new JLabel("File name:");
+		lblFileName.setBounds(358, 415, 68, 14);
+		frame.getContentPane().add(lblFileName);
 	}
 }
